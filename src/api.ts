@@ -1,7 +1,13 @@
 import axios from 'axios'
+
 export const TIMEOUT = 20000
 
-export const testApi = async (url: string,) => { 
+let auth = ''
+
+export const testApi = async (url: string, user: string, pass: string) => {
+  auth = btoa(`${user}:${pass}`)
+
+  console.log(auth, atob(auth))
 
   const result = await httpInstance().get(url)
   return result.data
@@ -10,10 +16,9 @@ export const testApi = async (url: string,) => {
 const httpInstance = () => {
   const instance = axios.create({
     headers: {
-       Accept: 'application/json', 
-      Authorization: `Basic dGVzdDp0ZXN0`,
-      Origin:'http://localhost:5173/'
-      
+      // Accept: 'application/json',
+      Authorization: `Basic ${auth}`,
+      // Origin: 'http://localhost:5173/',
     },
   })
 

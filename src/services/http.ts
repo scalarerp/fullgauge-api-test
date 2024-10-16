@@ -1,30 +1,19 @@
 import axios from 'axios'
-import { ApiStatus } from './types'
+import { useGlobalStore } from './globalStore'
 
 export const TIMEOUT = 20000
 
-let auth = ''
+export const httpInstance = () => {
+  const { user, pass, baseUrl } = useGlobalStore.getState()
+  const auth = btoa(`${user}:${pass}`)
 
-export const testApi = async (
-  url: string,
-  user: string,
-  pass: string
-): Promise<ApiStatus> => {
-  auth = btoa(`${user}:${pass}`)
-
-  const result = await httpInstance().get(url)
-  return result.data
-}
-
-const httpInstance = () => {
   const instance = axios.create({
     headers: {
-      // Accept: 'application/json',
       Authorization: `Basic ${auth}`,
-      // Origin: 'http://localhost:5173/',
     },
   })
 
+  instance.defaults.baseURL = baseUrl
   instance.defaults.timeout = TIMEOUT
 
   instance.interceptors.request.use(

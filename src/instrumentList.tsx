@@ -3,8 +3,10 @@ import { InstrumentStatus } from './types'
 
 const InstrumentList = ({
   instruments,
+  handleSetInstrumentAndConverter,
 }: {
   instruments: InstrumentStatus[]
+  handleSetInstrumentAndConverter: (instrument: InstrumentStatus) => void
 }) => {
   const [search, setSearch] = useState('')
 
@@ -32,7 +34,12 @@ const InstrumentList = ({
       <div className="d-flex flex-wrap gap-3 text-nowrap">
         {data.map((x) => {
           return (
-            <div key={x.id} className="card" style={{ width: 300 }}>
+            <div
+              onClick={() => handleSetInstrumentAndConverter(x)}
+              key={x.id}
+              className="card"
+              style={{ width: 300 }}
+            >
               <div className="card-header d-flex justify-content-between">
                 <div>Id: {x.id}</div>
                 <div>Converter Id: {x.converterId}</div>

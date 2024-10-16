@@ -1,13 +1,16 @@
 import axios from 'axios'
+import { ApiStatus } from './types'
 
 export const TIMEOUT = 20000
 
 let auth = ''
 
-export const testApi = async (url: string, user: string, pass: string) => {
+export const testApi = async (
+  url: string,
+  user: string,
+  pass: string
+): Promise<ApiStatus> => {
   auth = btoa(`${user}:${pass}`)
-
-  console.log(auth, atob(auth))
 
   const result = await httpInstance().get(url)
   return result.data

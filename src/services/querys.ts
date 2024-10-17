@@ -16,8 +16,8 @@ export const useAlarmById = (id: number) => {
 }
 export const useConverter = () => {
   return useSuspenseQuery({
-    queryKey: [storeKeys.converter],
-    queryFn: api[storeKeys.converter],
+    queryKey: [storeKeys.converters],
+    queryFn: api[storeKeys.converters],
   })
 }
 export const useConverterById = (id: number) => {

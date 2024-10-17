@@ -1,9 +1,21 @@
 import { create } from 'zustand'
+
+export const panels = {
+  Instrumentos: 'Instrumentos',
+  Conversores: 'Conversores',
+  Macros: 'Macros',
+  Presets: 'Presets',
+} as const
+
+export type panelsType = (typeof panels)[keyof typeof panels]
+
 interface IUseGlobalStore {
   user: string
   pass: string
   baseUrl: string
   isLogged: boolean
+  searchString: string
+  panel: panelsType
 }
 
 export const useGlobalStore = create<IUseGlobalStore>()(() => ({
@@ -11,6 +23,8 @@ export const useGlobalStore = create<IUseGlobalStore>()(() => ({
   pass: 'test',
   baseUrl: 'https://fgserver-pro.sitrad.com/api/v1/',
   isLogged: false,
+  searchString: '',
+  panel: 'Conversores',
 }))
 
 export const setUserAndPassword = (user: string, pass: string) =>

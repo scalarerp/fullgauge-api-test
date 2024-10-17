@@ -11,17 +11,8 @@ root.render(
   <React.StrictMode>
     <Suspense fallback={<>...</>}>
       <QueryClientProvider client={queryClient}>
-        kujhkjhkjhkljhlkjhkjlh
         <App />
-        <Toaster
-          expand
-          richColors
-          closeButton
-          visibleToasts={9}
-          // position={
-          //   process.env.NODE_ENV !== 'production' ? 'bottom-right' : 'top-right'
-          // }
-        />
+        <Toaster expand richColors closeButton visibleToasts={9} />
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </Suspense>

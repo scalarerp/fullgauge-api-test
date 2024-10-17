@@ -1,73 +1,33 @@
 import { Suspense } from 'react'
 import { useGlobalStore } from './services/globalStore'
-import Instruments from './instruments'
+
+import Login from './components/login'
+import SearchBox from './components/searchBox'
+import Dashboard from './dashboard'
 
 const App = () => {
-  const { user, pass, baseUrl, isLogged } = useGlobalStore()
+  const { isLogged } = useGlobalStore()
 
   return (
-    <div>
-      <h1> Teste api Instrumentos FullGauge</h1>
-      {!isLogged && (
-        <>
-          <div className="d-flex gap-3 ">
-            <div className="form-label">
-              User
-              <input
-                id="user"
-                className="form-control"
-                value={user}
-                onChange={(e) =>
-                  useGlobalStore.setState({ user: e.target.value })
-                }
-              />
-            </div>
-
-            <div className="form-label">
-              Password
-              <input
-                id="pass"
-                type="password"
-                className="form-control"
-                value={pass}
-                onChange={(e) =>
-                  useGlobalStore.setState({ pass: e.target.value })
-                }
-              />
-            </div>
-          </div>
-          <div className="form-label">
-            URL
-            <input
-              id="baseUrl"
-              type="url"
-              className="form-control"
-              value={baseUrl}
-              onChange={(e) => {
-                useGlobalStore.setState({ baseUrl: e.target.value })
-              }}
-            />
-          </div>
-          <button
-            id="submit"
-            className="btn btn-primary"
-            type="button"
-            onClick={() => {
-              useGlobalStore.setState({ isLogged: true })
-              console.log('login')
-            }}
-          >
-            Login
-          </button>
-        </>
-      )}
+    <div className="text-nowrap">
+      <h1 className="header p-3">
+        <img
+          src={'logoSitrad.png'}
+          title="Sitrad"
+          width={158}
+          height={45}
+          alt="Sitrad"
+        />
+        <span className="ms-5">Teste api FullGauge</span>
+      </h1>
+      {!isLogged && <Login />}
       <hr />
 
       {isLogged && (
         <>
-          logado
+          <SearchBox />
           <Suspense fallback={<>.......buscando dados</>}>
-            <Instruments />
+            <Dashboard />
           </Suspense>
         </>
       )}

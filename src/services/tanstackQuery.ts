@@ -12,7 +12,7 @@ export const queryClient = new QueryClient({
 export enum storeKeys {
   alarms = 'alarms',
   alarmById = 'alarmById',
-  converter = 'converter',
+  converters = 'converters',
   converterById = 'converterById',
   instrumentsByConverterId = 'instrumentsByConverterId',
   instruments = 'instruments',

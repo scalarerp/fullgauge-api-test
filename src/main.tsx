@@ -5,6 +5,8 @@ import { queryClient } from './services/tanstackQuery'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { Toaster } from 'sonner'
+import './assets/bootstrap.scss'
+import './assets/index.scss'
 
 const root = ReactDOM.createRoot(document.getElementById('root')!)
 root.render(

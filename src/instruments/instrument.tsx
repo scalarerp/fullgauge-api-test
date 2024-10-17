@@ -1,32 +1,24 @@
+import { BellOff, BellRing } from 'lucide-react'
 import ObjectPropsShow from '../components/objectPropsShow'
 import { IInstrument } from '../types'
 
 const Instrument = ({ instrument }: { instrument: IInstrument }) => {
-  const { status, converterId, id, name, isAlarmsManuallyInhibited } =
-    instrument
+  const { status, name, isAlarmsManuallyInhibited } = instrument
   const isActive = status.toLowerCase() === 'active'
+
   return (
-    <div className="card">
-      <div className="card-header d-flex justify-content-between">
-        <div>Id: {id}</div>
-        <div>Converter Id: {converterId}</div>
-      </div>
-      <div className="card-body  ">
-        <div className="card-title d-flex justify-content-between">
-          <div className="fs-6 w-75 fw-bold">{name}</div>
-
-          <div className={`badge ${isActive ? 'bg-success' : 'bg-secondary'} `}>
-            {isActive ? 'Ativo' : '---'}
-          </div>
-          {isActive && (
-            <div className={`badge ${isActive ? 'bg-success' : 'bg-danger'} `}>
-              {!isAlarmsManuallyInhibited ? 'Alarmes Ativos' : 'Sem Alarmes'}
-            </div>
-          )}
+    <div className="">
+      <div
+        className={`rounded p-2 d-flex justify-content-between ${isActive ? 'active-bg' : 'bg-secondary'}`}
+      >
+        <div className="ms-1 fs-6 w-75 fw-bold">{name}</div>
+        <div className="me-2">
+          {isAlarmsManuallyInhibited && <BellOff color="red" />}
+          {!isAlarmsManuallyInhibited && <BellRing color="lime" />}
         </div>
-
-        <ObjectPropsShow obj={instrument} showPropsInitial />
       </div>
+
+      <ObjectPropsShow obj={instrument} />
     </div>
   )
 }

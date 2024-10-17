@@ -1,0 +1,47 @@
+//// https://tobiasahlin.com/blog/flexbox-break-to-new-row/
+/* Inserting a collapsed row between two flex items will make 
+ * the flex item that comes after it break to a new row */
+
+.grid-responsive {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+}
+.align-end {
+  align-items: end;
+}
+
+.gap-1rem {
+  gap: 1rem;
+}
+
+.div-item-1 {
+  flex-grow: 1;
+}
+.div-item-2 {
+  flex-grow: 2;
+}
+.div-item-3 {
+  flex-grow: 3;
+}
+.div-item-4 {
+  flex-grow: 4;
+}
+.div-item-5 {
+  flex-grow: 5;
+}
+.div-item-6 {
+  flex-grow: 6;
+}
+
+@media screen and (max-width: 375px) {
+  .div-item-1,
+  .div-item-2,
+  .div-item-3,
+  .div-item-4,
+  .div-item-5,
+  .div-item-6 {
+    margin-right: 0px !important;
+    width: 100%;
+  }
+}

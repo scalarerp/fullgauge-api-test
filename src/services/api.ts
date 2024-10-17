@@ -25,7 +25,9 @@ export const api = {
     const result = await httpInstance().get(url)
     return result.data
   },
-  async [storeKeys.instrumentsByConverterId](id: number) {
+  async [storeKeys.instrumentsByConverterId](
+    id: number
+  ): Promise<IInstruments> {
     const url = `converters/${id}/instruments`
     const result = await httpInstance().get(url)
     return result.data

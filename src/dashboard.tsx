@@ -14,7 +14,7 @@ const Dashboard = () => {
             <li key={x} className="nav-item">
               <div
                 role="button"
-                className={`nav-link ${x === panel ? 'active' : ''}`}
+                className={`nav-link ${x === panel ? 'active' : 'btn-outline'}`}
                 aria-current="page"
                 onClick={() =>
                   useGlobalStore.setState({ panel: x as panelsType })

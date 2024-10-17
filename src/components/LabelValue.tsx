@@ -16,7 +16,7 @@ const LabelValue = (props: Props) => {
   const _label = `${label?.replace(':', '')}`
 
   return (
-    <div className={`${className} d-flex  gap-1`}>
+    <div className={`${className} d-flex align-items-center  gap-1`}>
       <div className={`${isLabelHalfSize ? 'w-50' : 'w-25'}  text-end`}>
         {_label}
       </div>

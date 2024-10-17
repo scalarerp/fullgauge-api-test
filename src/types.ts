@@ -34,3 +34,23 @@ export interface IConverter {
   savePayloadInterval: number
   communicationFailInterval: number
 }
+export interface IMacros extends ApiStatus {
+  results: IMacro[]
+}
+export interface IMacro {
+  id: number
+  name: string
+  userId: number
+  creationDate: string
+}
+
+export interface IPresets extends ApiStatus {
+  results: IPreset[]
+}
+export interface IPreset {
+  creationDate: string
+  id: number
+  modelId: number
+  modelVersion: number
+  name: string
+}

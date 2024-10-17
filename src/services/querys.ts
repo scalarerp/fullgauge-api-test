@@ -56,10 +56,10 @@ export const useInstrumentModel = (id: number) => {
     queryFn: () => api[storeKeys.instrumentModelById](id),
   })
 }
-export const useMacro = () => {
+export const useMacros = () => {
   return useSuspenseQuery({
-    queryKey: [storeKeys.macro],
-    queryFn: api[storeKeys.macro],
+    queryKey: [storeKeys.macros],
+    queryFn: api[storeKeys.macros],
   })
 }
 // export const useAmacroInstrumentById = (id: number) => {
@@ -68,9 +68,9 @@ export const useMacro = () => {
 //     queryFn: () => api[storeKeys.macroInstrumentById](id),
 //   })
 // }
-export const usePreset = () => {
+export const usePresets = () => {
   return useSuspenseQuery({
-    queryKey: [storeKeys.preset],
-    queryFn: api[storeKeys.preset],
+    queryKey: [storeKeys.presets],
+    queryFn: api[storeKeys.presets],
   })
 }

@@ -1,4 +1,11 @@
-import { IConverter, IConverters, IInstrument, IInstruments } from '../types'
+import {
+  IConverter,
+  IConverters,
+  IInstrument,
+  IInstruments,
+  IMacros,
+  IPresets,
+} from '../types'
 import { httpInstance } from './http'
 import { storeKeys } from './tanstackQuery'
 
@@ -53,12 +60,12 @@ export const api = {
     const result = await httpInstance().get(url)
     return result.data
   },
-  async macro() {
+  async [storeKeys.macros](): Promise<IMacros> {
     const url = `macros`
     const result = await httpInstance().get(url)
     return result.data
   },
-  async preset() {
+  async [storeKeys.presets](): Promise<IPresets> {
     const url = `presets`
     const result = await httpInstance().get(url)
     return result.data

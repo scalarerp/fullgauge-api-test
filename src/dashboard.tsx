@@ -1,5 +1,7 @@
 import Converters from './converters'
 import InstrumentList from './instruments/instrumentList'
+import Macros from './macros'
+import Presets from './presets'
 import { panels, panelsType, useGlobalStore } from './services/globalStore'
 
 const Dashboard = () => {
@@ -28,6 +30,8 @@ const Dashboard = () => {
       </ul>
       {panel === 'Instrumentos' && <InstrumentList />}
       {panel === 'Conversores' && <Converters />}
+      {panel === 'Macros' && <Macros />}
+      {panel === 'Presets' && <Presets />}
     </div>
   )
 }

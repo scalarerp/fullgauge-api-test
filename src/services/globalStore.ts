@@ -1,8 +1,8 @@
 import { create } from 'zustand'
 
 export const panels = {
-  Instrumentos: 'Instrumentos',
   Conversores: 'Conversores',
+  Instrumentos: 'Instrumentos',
   Macros: 'Macros',
   Presets: 'Presets',
 } as const

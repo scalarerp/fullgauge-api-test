@@ -8,12 +8,20 @@ const Converter = ({ converter }: { converter: IConverter }) => {
   const [showInstruments, setShowInstruments] = useState(false)
   const { id, name, status } = converter
   const isActive = status.toLowerCase() === 'active'
+
+  const bg =
+    isActive && showInstruments
+      ? 'active-open-bg'
+      : isActive
+        ? 'active-bg'
+        : 'bg-secondary'
+
   return (
     <div>
       <div
         role="button"
         onClick={() => setShowInstruments(!showInstruments)}
-        className={`p-2 rounded d-flex justify-content-between ${isActive ? 'active-bg' : 'bg-secondary'}  `}
+        className={`p-2 rounded d-flex justify-content-between ${bg}  `}
       >
         <div className="d-flex ">
           {showInstruments ? <ChevronUp /> : <ChevronDown />}

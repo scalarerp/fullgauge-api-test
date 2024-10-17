@@ -19,7 +19,7 @@ export enum storeKeys {
   instrumentById = 'instrumentById',
   instrumentsModels = 'instrumentsModels',
   instrumentModelById = 'instrumentModelById',
-  macro = 'macro',
+  macros = 'macros',
   macroInstrumentById = 'macroInstrumentById',
-  preset = 'preset',
+  presets = 'presets',
 }

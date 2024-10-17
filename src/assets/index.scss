@@ -9,7 +9,7 @@ body {
 
 :root {
   --sitrad-color: #00605a;
-  --bg-green: #01570f;
+  --bg-green: #00605954;
   --bg-red: red;
   --bg-blue: blue;
 }
@@ -21,6 +21,9 @@ body {
 
 .active-bg {
   background-color: var(--sitrad-color);
+}
+.active-open-bg {
+  background-color: var(--bg-green);
 }
 
 .grid-cols {

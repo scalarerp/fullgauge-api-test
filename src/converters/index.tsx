@@ -1,10 +1,10 @@
 import { useGlobalStore } from '../services/globalStore'
 import { useConverter } from '../services/querys'
+import { getFilteredData } from '../utils'
 import Converter from './converter'
 
 const Converters = () => {
   const { data, error } = useConverter()
-  const { searchString } = useGlobalStore()
   if (error) {
     console.log(error)
     useGlobalStore.setState({ isLogged: false })
@@ -17,14 +17,7 @@ const Converters = () => {
       </h1>
     )
 
-  const dataFiltered =
-    searchString === ''
-      ? data.results
-      : data.results.filter((x) =>
-          Object.values(x).some((s) =>
-            ('' + String(s)).toLowerCase().includes(searchString.toLowerCase())
-          )
-        ) || []
+  const dataFiltered = getFilteredData(data)
 
   return (
     <div>

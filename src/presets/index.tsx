@@ -1,12 +1,9 @@
-import { useGlobalStore } from '../services/globalStore'
 import { usePresets } from '../services/querys'
-
 import SimpleGridTable from '../components/simpleGridTable'
+import { getFilteredData } from '../utils'
 
 const Presets = () => {
-  const { searchString } = useGlobalStore()
   const { data } = usePresets()
-
   if (data.status !== 200)
     return (
       <h1>
@@ -14,14 +11,7 @@ const Presets = () => {
       </h1>
     )
 
-  const dataFiltered =
-    searchString === ''
-      ? data.results
-      : data.results.filter((x) =>
-          Object.values(x).some((s) =>
-            ('' + String(s)).toLowerCase().includes(searchString.toLowerCase())
-          )
-        ) || []
+  const dataFiltered = getFilteredData(data)
 
   return (
     <div>

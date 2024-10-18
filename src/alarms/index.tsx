@@ -1,27 +1,16 @@
-import { useGlobalStore } from '../services/globalStore'
 import { useAlarms } from '../services/querys'
-
 import SimpleGridTable from '../components/simpleGridTable'
+import { getFilteredData } from '../utils'
 
 const Alarms = () => {
-  const { searchString } = useGlobalStore()
   const { data } = useAlarms()
-
   if (data.status !== 200)
     return (
       <h1>
         sem dados {data.status} - {data.resultsQty}
       </h1>
     )
-
-  const dataFiltered =
-    searchString === ''
-      ? data.results
-      : data.results.filter((x) =>
-          Object.values(x).some((s) =>
-            ('' + String(s)).toLowerCase().includes(searchString.toLowerCase())
-          )
-        ) || []
+  const dataFiltered = getFilteredData(data)
 
   return (
     <div>

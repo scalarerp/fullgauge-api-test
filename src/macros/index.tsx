@@ -1,9 +1,8 @@
-import { useGlobalStore } from '../services/globalStore'
 import { useMacros } from '../services/querys'
 import SimpleGridTable from '../components/simpleGridTable'
+import { getFilteredData } from '../utils'
 
 const Macros = () => {
-  const { searchString } = useGlobalStore()
   const { data } = useMacros()
 
   if (data.status !== 200)
@@ -13,14 +12,7 @@ const Macros = () => {
       </h1>
     )
 
-  const dataFiltered =
-    searchString === ''
-      ? data.results
-      : data.results.filter((x) =>
-          Object.values(x).some((s) =>
-            ('' + String(s)).toLowerCase().includes(searchString.toLowerCase())
-          )
-        ) || []
+  const dataFiltered = getFilteredData(data)
 
   return (
     <>

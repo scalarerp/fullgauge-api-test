@@ -1,10 +1,9 @@
 import React from 'react'
-import { useGlobalStore } from '../services/globalStore'
 import { useInstruments } from '../services/querys'
 import Instrument from './instrument'
+import { getFilteredData } from '../utils'
 
 const InstrumentList = () => {
-  const { searchString } = useGlobalStore()
   const { data } = useInstruments()
 
   if (data.status !== 200)
@@ -14,15 +13,7 @@ const InstrumentList = () => {
       </h1>
     )
 
-  const dataFiltered =
-    searchString === ''
-      ? data.results
-      : data.results.filter((x) =>
-          Object.values(x).some((s) =>
-            ('' + String(s)).toLowerCase().includes(searchString.toLowerCase())
-          )
-        ) || []
-
+  const dataFiltered = getFilteredData(data)
   return (
     <div>
       <div className="d-flex justify-content-between mb-2 ms-3 me-5">

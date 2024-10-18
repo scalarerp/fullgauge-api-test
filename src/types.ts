@@ -17,6 +17,17 @@ export interface IInstrument {
   modelVersion: number
   isAlarmsManuallyInhibited: boolean
 }
+export const InstrumentFieldNames = [
+  'id',
+  'converterId',
+  'name',
+  'address',
+  'statusId',
+  'status',
+  'modelId',
+  'modelVersion',
+  'isAlarmsManuallyInhibited',
+]
 
 export interface IConverters extends ApiStatus {
   results: IConverter[]
@@ -34,6 +45,20 @@ export interface IConverter {
   savePayloadInterval: number
   communicationFailInterval: number
 }
+export const ConverterFieldNames = [
+  'id',
+  'name',
+  'statusId',
+  'status',
+  'statusDescription',
+  'typeId',
+  'type',
+  'version',
+  'communicationTimeout',
+  'savePayloadInterval',
+  'communicationFailInterval',
+]
+
 export interface IMacros extends ApiStatus {
   results: IMacro[]
 }
@@ -43,6 +68,7 @@ export interface IMacro {
   userId: number
   creationDate: string
 }
+export const MacroFieldNames = ['id', 'name', 'userId', 'creationDate']
 
 export interface IPresets extends ApiStatus {
   results: IPreset[]
@@ -54,6 +80,14 @@ export interface IPreset {
   modelVersion: number
   name: string
 }
+
+export const PresetFieldNames = [
+  'creationDate',
+  'id',
+  'modelId',
+  'modelVersion',
+  'name',
+]
 
 export interface IAlarms extends ApiStatus {
   results: IAlarm[]
@@ -72,3 +106,16 @@ export interface IAlarm {
   endDate: string
   recognizedDate: string
 }
+export const ALarmFieldNames = [
+  'id',
+  'instrumentId',
+  'code',
+  'description',
+  'value',
+  'startDate',
+  'isFinalized',
+  'isInhibited',
+  'isRecognized',
+  'endDate',
+  'recognizedDate',
+]

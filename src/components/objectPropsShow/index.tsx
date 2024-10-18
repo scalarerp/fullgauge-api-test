@@ -23,7 +23,7 @@ const ObjectPropsShow = ({
         <div className="ps-2 pe-2">
           {showProps ? <ChevronUp /> : <ChevronDown />}
         </div>
-        <div>Propriedades</div>
+        <div>Properties</div>
       </div>
       <Collapse show={showProps}>
         <ContentBg>

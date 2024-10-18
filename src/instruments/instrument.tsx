@@ -13,10 +13,12 @@ const Instrument = ({ instrument }: { instrument: IInstrument }) => {
         className={`rounded p-2 d-flex justify-content-between ${isActive ? 'active-bg' : 'bg-secondary'}`}
       >
         <div className="ms-1 fs-6 w-75 fw-bold">{name}</div>
-        <AlarmsByInstrumentId id={instrument.id} />
+
         <div className="me-2">
           {isAlarmsManuallyInhibited && <BellOff color="red" />}
-          {!isAlarmsManuallyInhibited && <BellRing color="lime" />}
+          {!isAlarmsManuallyInhibited && (
+            <AlarmsByInstrumentId id={instrument.id} />
+          )}
         </div>
       </div>
 

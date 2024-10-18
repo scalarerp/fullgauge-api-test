@@ -45,7 +45,7 @@ const SimpleGridTable = ({
     <div className="mt-1 mb-2 p-1">
       <div
         ref={containerRef}
-        className="w-100 border rounded text-uppercase text-wrap"
+        className="w-100 border rounded  text-wrap"
         style={{
           ...containerStyle,
           display: 'grid',

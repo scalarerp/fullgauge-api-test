@@ -30,11 +30,11 @@ const Dashboard = () => {
         })}
       </ul>
       <div className="d-flex flex-column flex-grow-1 overflow-y-auto">
-        {panel === 'Instrumentos' && <InstrumentList />}
-        {panel === 'Conversores' && <Converters />}
+        {panel === 'Instruments' && <InstrumentList />}
+        {panel === 'Converters' && <Converters />}
         {panel === 'Macros' && <Macros />}
         {panel === 'Presets' && <Presets />}
-        {panel === 'Alarmes' && <Alarms />}
+        {panel === 'Alarms' && <Alarms />}
       </div>
     </div>
   )

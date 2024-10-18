@@ -6,7 +6,7 @@ const ApiStatusCount = ({ resultsQty }: { resultsQty: number }) => {
     <div>
       <div className="d-flex justify-content-between mb-2 ms-3 me-5">
         <div>
-          Total de {panel}: {resultsQty}
+          {panel}: {resultsQty}
         </div>
       </div>
     </div>

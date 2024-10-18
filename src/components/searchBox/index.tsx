@@ -5,7 +5,7 @@ const SearchBox = () => {
   return (
     <div className="d-flex justify-content-between ">
       <div className="form-label mb-3 w-75">
-        Busca:
+        Filter:
         <input
           type="search"
           className="form-control"
@@ -17,7 +17,7 @@ const SearchBox = () => {
         />
       </div>
       <div className="form-label mb-3">
-        Dias retroativos para Alarmes:
+        Alarms retroactive days:
         <input
           type="number"
           className="form-control"

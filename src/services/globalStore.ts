@@ -1,11 +1,11 @@
 import { create } from 'zustand'
 
 export const panels = {
-  Conversores: 'Conversores',
-  Instrumentos: 'Instrumentos',
+  Converters: 'Converters',
+  Instruments: 'Instruments',
   Macros: 'Macros',
   Presets: 'Presets',
-  Alarmes: 'Alarmes',
+  Alarms: 'Alarms',
 } as const
 
 export type panelsType = (typeof panels)[keyof typeof panels]

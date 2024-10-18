@@ -23,7 +23,7 @@ const App = () => {
               height={45}
               alt="Sitrad"
             />
-            <span className="ms-5">Teste api FullGauge</span>
+            <span className="ms-5">Api Test</span>
           </h1>
           {!isLogged && <Login />}
           <hr />

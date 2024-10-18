@@ -7,11 +7,12 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { Toaster } from 'sonner'
 import './assets/bootstrap.scss'
 import './assets/index.scss'
+import { LoaderCircle } from 'lucide-react'
 
 const root = ReactDOM.createRoot(document.getElementById('root')!)
 root.render(
   <React.StrictMode>
-    <Suspense fallback={<>...</>}>
+    <Suspense fallback={<LoaderCircle size={256} />}>
       <QueryClientProvider client={queryClient}>
         <App />
         <Toaster expand richColors closeButton visibleToasts={9} />

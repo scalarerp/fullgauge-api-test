@@ -27,7 +27,7 @@ export const useGlobalStore = create<IUseGlobalStore>()(() => ({
   isLogged: false,
   searchString: '',
   panel: 'Conversores',
-  alarmsDays: 5,
+  alarmsDays: 3,
 }))
 
 export const setUserAndPassword = (user: string, pass: string) =>

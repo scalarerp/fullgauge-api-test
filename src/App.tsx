@@ -4,6 +4,7 @@ import { useGlobalStore } from './services/globalStore'
 import Login from './components/login'
 import SearchBox from './components/searchBox'
 import Dashboard from './dashboard'
+import { LoaderCircle } from 'lucide-react'
 
 const App = () => {
   const { isLogged } = useGlobalStore()
@@ -27,7 +28,15 @@ const App = () => {
       {isLogged && (
         <>
           <SearchBox />
-          <Suspense fallback={<>.......buscando dados</>}>
+          <Suspense
+            fallback={
+              <LoaderCircle
+                className="animate-spin m-auto"
+                size={150}
+                color="var(--sitrad-color)"
+              />
+            }
+          >
             <Dashboard />
           </Suspense>
         </>

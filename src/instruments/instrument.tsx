@@ -20,7 +20,7 @@ const Instrument = ({ instrument }: { instrument: IInstrument }) => {
         </div>
       </div>
 
-      <SimpleGridTable anyArray={[instrument]} />
+      <SimpleGridTable anyArray={[instrument]} resizable={false} />
       {/* <ObjectPropsShow obj={instrument} /> */}
     </div>
   )

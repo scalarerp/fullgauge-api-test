@@ -41,7 +41,7 @@ const SimpleGridTable = ({
   const headers = useMemo(() => Object.keys(anyArray[0] || {}), [anyArray])
 
   return (
-    <div>
+    <div className="mt-1 mb-2 p-1">
       <div
         ref={containerRef}
         className="w-100 border rounded text-uppercase text-wrap"

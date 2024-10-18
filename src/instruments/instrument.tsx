@@ -21,7 +21,6 @@ const Instrument = ({ instrument }: { instrument: IInstrument }) => {
       </div>
 
       <SimpleGridTable anyArray={[instrument]} resizable={false} />
-      {/* <ObjectPropsShow obj={instrument} /> */}
     </div>
   )
 }

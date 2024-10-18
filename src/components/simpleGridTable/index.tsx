@@ -1,5 +1,4 @@
 import React, { useRef, useState, useMemo, useEffect } from 'react'
-// import { useEventListener } from 'usehooks-ts'
 
 const SimpleGridTable = ({
   anyArray,
@@ -25,8 +24,6 @@ const SimpleGridTable = ({
     }
   }
 
-  // useEventListener('resize', updateContainerStyle)
-
   useEffect(() => {
     if (resizable) {
       updateContainerStyle()
@@ -39,6 +36,10 @@ const SimpleGridTable = ({
   }, [])
 
   const headers = useMemo(() => Object.keys(anyArray[0] || {}), [anyArray])
+
+  if (!Array.isArray(anyArray) || anyArray.length === 0) {
+    return <h5>Sem dados</h5>
+  }
 
   return (
     <div className="mt-1 mb-2 p-1">

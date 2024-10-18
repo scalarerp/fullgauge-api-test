@@ -54,3 +54,21 @@ export interface IPreset {
   modelVersion: number
   name: string
 }
+
+export interface IAlarms extends ApiStatus {
+  results: IAlarm[]
+}
+
+export interface IAlarm {
+  id: number
+  instrumentId: number
+  code: string
+  description: string
+  value: string
+  startDate: string
+  isFinalized: boolean
+  isInhibited: boolean
+  isRecognized: boolean
+  endDate: string
+  recognizedDate: string
+}

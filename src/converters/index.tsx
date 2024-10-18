@@ -3,9 +3,13 @@ import { useConverter } from '../services/querys'
 import Converter from './converter'
 
 const Converters = () => {
-  const { data } = useConverter()
+  const { data, error } = useConverter()
   const { searchString } = useGlobalStore()
-
+  if (error) {
+    console.log(error)
+    useGlobalStore.setState({ isLogged: false })
+    return <h1>api error</h1>
+  }
   if (data.status !== 200)
     return (
       <h1>

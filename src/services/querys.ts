@@ -74,3 +74,9 @@ export const usePresets = () => {
     queryFn: api[storeKeys.presets],
   })
 }
+export const useAlarmsByInstrumentId = (id: number) => {
+  return useSuspenseQuery({
+    queryKey: [storeKeys.alarmsByInstrumentId, id],
+    queryFn: () => api[storeKeys.alarmsByInstrumentId](id),
+  })
+}

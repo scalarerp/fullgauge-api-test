@@ -1,6 +1,7 @@
 import { BellOff, BellRing } from 'lucide-react'
-import ObjectPropsShow from '../components/objectPropsShow'
 import { IInstrument } from '../types'
+import AlarmsByInstrumentId from './alarmsByInstrumentId'
+import SimpleGridTable from '../components/simpleGridTable'
 
 const Instrument = ({ instrument }: { instrument: IInstrument }) => {
   const { status, name, isAlarmsManuallyInhibited } = instrument
@@ -12,13 +13,15 @@ const Instrument = ({ instrument }: { instrument: IInstrument }) => {
         className={`rounded p-2 d-flex justify-content-between ${isActive ? 'active-bg' : 'bg-secondary'}`}
       >
         <div className="ms-1 fs-6 w-75 fw-bold">{name}</div>
+        <AlarmsByInstrumentId id={instrument.id} />
         <div className="me-2">
           {isAlarmsManuallyInhibited && <BellOff color="red" />}
           {!isAlarmsManuallyInhibited && <BellRing color="lime" />}
         </div>
       </div>
 
-      <ObjectPropsShow obj={instrument} />
+      <SimpleGridTable anyArray={[instrument]} />
+      {/* <ObjectPropsShow obj={instrument} /> */}
     </div>
   )
 }

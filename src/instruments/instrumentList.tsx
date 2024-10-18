@@ -29,7 +29,7 @@ const InstrumentList = () => {
         <div>Total de Instrumentos: {data.resultsQty}</div>
         <span>Api status: {data.status} </span>
       </div>
-      <div className="grid-cols">
+      <div className="d-flex flex-column gap-3">
         {dataFiltered.map((x) => {
           return (
             <React.Fragment key={x.id}>

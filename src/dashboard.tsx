@@ -1,3 +1,4 @@
+import Alarms from './alarms'
 import Converters from './converters'
 import InstrumentList from './instruments/instrumentList'
 import Macros from './macros'
@@ -28,10 +29,13 @@ const Dashboard = () => {
           )
         })}
       </ul>
-      {panel === 'Instrumentos' && <InstrumentList />}
-      {panel === 'Conversores' && <Converters />}
-      {panel === 'Macros' && <Macros />}
-      {panel === 'Presets' && <Presets />}
+      <div className="d-flex flex-column flex-grow-1 overflow-y-auto">
+        {panel === 'Instrumentos' && <InstrumentList />}
+        {panel === 'Conversores' && <Converters />}
+        {panel === 'Macros' && <Macros />}
+        {panel === 'Presets' && <Presets />}
+        {panel === 'Alarmes' && <Alarms />}
+      </div>
     </div>
   )
 }

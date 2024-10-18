@@ -1,11 +1,11 @@
 import { useGlobalStore } from '../services/globalStore'
-import { usePresets } from '../services/querys'
+import { useAlarms } from '../services/querys'
 
 import SimpleGridTable from '../components/simpleGridTable'
 
-const Presets = () => {
+const Alarms = () => {
   const { searchString } = useGlobalStore()
-  const { data } = usePresets()
+  const { data } = useAlarms()
 
   if (data.status !== 200)
     return (
@@ -34,4 +34,4 @@ const Presets = () => {
   )
 }
 
-export default Presets
+export default Alarms

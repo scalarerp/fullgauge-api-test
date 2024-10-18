@@ -1,4 +1,5 @@
 import {
+  IAlarms,
   IConverter,
   IConverters,
   IInstrument,
@@ -6,15 +7,37 @@ import {
   IMacros,
   IPresets,
 } from '../types'
+import { useGlobalStore } from './globalStore'
 import { httpInstance } from './http'
 import { storeKeys } from './tanstackQuery'
 
 export const TIMEOUT = 20000
 
+const currentDate = new Date()
+currentDate.setUTCHours(0, 0, 0, 0)
+
+const startDate = new Date(
+  currentDate.setUTCDate(
+    currentDate.getUTCDate() - useGlobalStore.getState().alarmsDays
+  )
+)
+  .toISOString()
+  .replace('.000', '')
+
+const endDate = new Date(currentDate.setUTCDate(currentDate.getUTCDate() + 1))
+  .toISOString()
+  .replace('.000', '')
+
 export const api = {
-  async [storeKeys.alarms]() {
+  async [storeKeys.alarms](): Promise<IAlarms> {
     const url = `alarms`
-    const result = await httpInstance().get(url)
+    const result = await httpInstance().get(url, {
+      params: {
+        startDate: startDate,
+        endDate: endDate,
+        // alarmStatus: 'unfinalized',
+      },
+    })
     return result.data
   },
   async [storeKeys.alarmById](id: number) {
@@ -68,6 +91,17 @@ export const api = {
   async [storeKeys.presets](): Promise<IPresets> {
     const url = `presets`
     const result = await httpInstance().get(url)
+    return result.data
+  },
+  async [storeKeys.alarmsByInstrumentId](id: number): Promise<IAlarms> {
+    const url = `instruments/${id}/alarms`
+    const result = await httpInstance().get(url, {
+      params: {
+        startDate: startDate,
+        endDate: endDate,
+        // alarmStatus: 'unfinalized',
+      },
+    })
     return result.data
   },
 }

@@ -22,4 +22,5 @@ export enum storeKeys {
   macros = 'macros',
   macroInstrumentById = 'macroInstrumentById',
   presets = 'presets',
+  alarmsByInstrumentId = 'alarmsByInstrumentId',
 }

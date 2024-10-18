@@ -5,6 +5,7 @@ export const panels = {
   Instrumentos: 'Instrumentos',
   Macros: 'Macros',
   Presets: 'Presets',
+  Alarmes: 'Alarmes',
 } as const
 
 export type panelsType = (typeof panels)[keyof typeof panels]
@@ -16,6 +17,7 @@ interface IUseGlobalStore {
   isLogged: boolean
   searchString: string
   panel: panelsType
+  alarmsDays: number
 }
 
 export const useGlobalStore = create<IUseGlobalStore>()(() => ({
@@ -25,6 +27,7 @@ export const useGlobalStore = create<IUseGlobalStore>()(() => ({
   isLogged: false,
   searchString: '',
   panel: 'Conversores',
+  alarmsDays: 5,
 }))
 
 export const setUserAndPassword = (user: string, pass: string) =>

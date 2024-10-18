@@ -44,7 +44,6 @@ const Login = () => {
         type="button"
         onClick={() => {
           useGlobalStore.setState({ isLogged: true })
-          console.log('login')
         }}
       >
         Login

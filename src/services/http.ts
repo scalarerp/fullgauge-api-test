@@ -1,5 +1,7 @@
 import axios from 'axios'
 import { useGlobalStore } from './globalStore'
+import { toast } from 'sonner'
+import { queryClient } from './tanstackQuery'
 
 export const TIMEOUT = 20000
 
@@ -21,10 +23,11 @@ export const httpInstance = () => {
       return request
     },
     (error) => {
-      console.error(
-        'Error in interceptors.request',
-        JSON.stringify(error.message)
-      )
+      queryClient.removeQueries()
+      useGlobalStore.setState({ isLogged: false })
+      toast.error('Api request Error:', {
+        description: JSON.stringify(error.message),
+      })
       return Promise.reject(error)
     }
   )
@@ -34,13 +37,13 @@ export const httpInstance = () => {
       return response
     },
     (error) => {
+      queryClient.removeQueries()
+      useGlobalStore.setState({ isLogged: false })
       const errorUrl = `${error.config.url}`
-      console.log(errorUrl)
 
-      console.error(
-        'Error in interceptors.response',
-        JSON.stringify(error.message)
-      )
+      toast.error('Api response Error: ' + errorUrl, {
+        description: JSON.stringify(error.message),
+      })
 
       return Promise.reject(error)
     }

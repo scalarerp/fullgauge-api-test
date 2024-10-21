@@ -1,5 +1,5 @@
-import { BellOff, BellRing } from 'lucide-react'
-import { IInstrument } from '../types'
+import { BellOff } from 'lucide-react'
+import { IInstrument, InstrumentFieldNames } from '../types'
 import AlarmsByInstrumentId from './alarmsByInstrumentId'
 import SimpleGridTable from '../components/simpleGridTable'
 
@@ -22,7 +22,11 @@ const Instrument = ({ instrument }: { instrument: IInstrument }) => {
         </div>
       </div>
 
-      <SimpleGridTable anyArray={[instrument]} resizable={false} />
+      <SimpleGridTable
+        anyArray={[instrument]}
+        headers={InstrumentFieldNames}
+        resizable={false}
+      />
     </div>
   )
 }

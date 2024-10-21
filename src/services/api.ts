@@ -7,33 +7,16 @@ import {
   IMacros,
   IPresets,
 } from '../types'
-import { useGlobalStore } from './globalStore'
+import { getStartEndDates } from '../utils'
 import { httpInstance } from './http'
 import { storeKeys } from './tanstackQuery'
 
-export const millisecondsInHour = 3600000
-export const millisecondsInDay = 3600000 * 24
-
 export const TIMEOUT = 20000
-
-const currentDate = new Date()
-currentDate.setUTCHours(0, 0, 0, 0)
-
-const startDate = new Date(
-  currentDate.getTime() -
-    millisecondsInDay * useGlobalStore.getState().alarmsDays
-)
-  .toISOString()
-  .replace('.000', '')
-
-const endDate = new Date(currentDate.getTime() + millisecondsInDay)
-  .toISOString()
-  .replace('.000', '')
 
 export const api = {
   async [storeKeys.alarms](): Promise<IAlarms> {
+    const { startDate, endDate } = getStartEndDates()
     const url = `alarms`
-
     const result = await httpInstance().get(url, {
       params: {
         startDate: startDate,
@@ -44,6 +27,7 @@ export const api = {
     return result.data
   },
   async [storeKeys.alarmsByInstrumentId](id: number): Promise<IAlarms> {
+    const { startDate, endDate } = getStartEndDates()
     const url = `instruments/${id}/alarms`
     const result = await httpInstance().get(url, {
       params: {

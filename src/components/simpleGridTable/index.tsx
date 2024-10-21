@@ -1,11 +1,13 @@
-import React, { useRef, useState, useMemo, useEffect } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 
 const SimpleGridTable = ({
   anyArray,
+  headers,
   resizable = true,
 }: {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   anyArray: any[]
+  headers: string[]
   resizable?: boolean
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -35,7 +37,7 @@ const SimpleGridTable = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const headers = useMemo(() => Object.keys(anyArray[0] || {}), [anyArray])
+  // const headers = useMemo(() => Object.keys(anyArray[0] || {}), [anyArray])
 
   if (!Array.isArray(anyArray) || anyArray.length === 0) {
     return <h5>Sem dados</h5>

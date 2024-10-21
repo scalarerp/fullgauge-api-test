@@ -26,7 +26,7 @@ export const useGlobalStore = create<IUseGlobalStore>()(() => ({
   baseUrl: 'https://fgserver-pro.sitrad.com/api/v1/',
   isLogged: false,
   searchString: '',
-  panel: 'Conversores',
+  panel: 'Converters',
   alarmsDays: 3,
 }))
 

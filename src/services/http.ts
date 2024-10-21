@@ -25,7 +25,7 @@ export const httpInstance = () => {
     (error) => {
       queryClient.removeQueries()
       useGlobalStore.setState({ isLogged: false })
-      toast.error('Api request Error:', {
+      toast.error('API request Error:', {
         description: JSON.stringify(error.message),
       })
       return Promise.reject(error)
@@ -37,12 +37,21 @@ export const httpInstance = () => {
       return response
     },
     (error) => {
+      console.log(error)
       queryClient.removeQueries()
       useGlobalStore.setState({ isLogged: false })
       const errorUrl = `${error.config.url}`
 
-      toast.error('Api response Error: ' + errorUrl, {
-        description: JSON.stringify(error.message),
+      const errorsDescription = [error.message]
+
+      if (error.code === 'ERR_BAD_REQUEST' || error.response.data.errors) {
+        error.response.data.errors.forEach((x: string) => {
+          errorsDescription.push(x)
+        })
+      }
+
+      toast.error('API response Error: ' + errorUrl, {
+        description: errorsDescription.join(', '),
       })
 
       return Promise.reject(error)

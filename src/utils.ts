@@ -1,5 +1,7 @@
 import { useGlobalStore } from './services/globalStore'
 import { ApiStatus } from './types'
+export const millisecondsInHour = 3600000
+export const millisecondsInDay = 3600000 * 24
 
 interface anyApiStatus extends ApiStatus {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -18,4 +20,22 @@ export const getFilteredData = (data: anyApiStatus) => {
           )
         ) || []
   return dataFiltered
+}
+
+export const getStartEndDates = () => {
+  const currentDate = new Date()
+  currentDate.setUTCHours(0, 0, 0, 0)
+
+  const startDate = new Date(
+    currentDate.getTime() -
+      millisecondsInDay * useGlobalStore.getState().alarmsDays
+  )
+    .toISOString()
+    .replace('.000', '')
+
+  const endDate = new Date(currentDate.getTime() + millisecondsInDay)
+    .toISOString()
+    .replace('.000', '')
+
+  return { startDate, endDate }
 }
